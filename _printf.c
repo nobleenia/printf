@@ -14,6 +14,7 @@ unsigned a;
 unsigned ret_val = 0;
 char buffer[12];
 
+
 va_list args;
 va_start(args, format);
 
@@ -51,6 +52,11 @@ a++;
 else
 {
 _putchar('%');
+ret_val++;
+}
+if (format[a / 2] == 'b')
+{
+_putchar(va_arg(args, int));
 ret_val++;
 }
 }
