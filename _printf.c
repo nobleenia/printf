@@ -11,6 +11,7 @@ int _printf(const char *format, ...)
 
   unsigned a;
   unsigned ret_val = 0;
+  get_int a = num / 10;
 
   va_list args;
   va_start(args, format);
@@ -40,5 +41,13 @@ int _printf(const char *format, ...)
 	}
       ret_val++;
     }
+  else if (number == 0)
+  {
+	  _putchar((n % 10) + '0');
+  }
+  else if (format[a + 1] == 'i')
+  {
+	  _putchar(va_arg(args, int))
+		  a++;
   return (ret_val);
 }
