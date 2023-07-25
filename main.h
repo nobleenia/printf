@@ -9,4 +9,7 @@ int _putchar(char c);
 int _puts(const char *s);
 int _getint(int n, char *buffer);
 void _getbinary(unsigned int num, char *buffer); 
+int _letint(int n, char *buffer);
+void _octal(unsigned int num, char *buffer);
+void _hexaint(unsigned int num, char *buffer, int digit);
 #endif

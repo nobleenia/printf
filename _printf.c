@@ -54,6 +54,34 @@ else if (format[a + 1] == 'b')
 	ret_val += _puts(buffer);
 	a++;
 		}
+else if (format[a + 1] == 'u')
+{
+	 unsigned int num = va_arg(args, unsigned int);
+	_letint(num, buffer);
+	ret_val += _puts(buffer);
+	a++;
+}
+else if (format[a + 1] == 'o')
+{
+	unsigned int num = va_arg(args, unsigned int);
+	_octal(num, buffer);
+	ret_val += _puts(buffer);
+	a++;
+}
+else if (format[a + 1] == 'x')
+		{
+		unsigned int num = va_arg(args, unsigned int);
+		_hexaint(num, buffer, 0);
+		ret_val += _puts(buffer);
+		a++;
+		}
+else if (format[a + 1] == 'X')
+{
+	unsigned int num =va_arg(args, unsigned int);
+	_hexaint(num, buffer, 1);
+	ret_val += _puts(buffer);
+	a++;
+}
 else
 {
 _putchar('%');
