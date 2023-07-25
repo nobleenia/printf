@@ -60,6 +60,32 @@ _putchar(va_arg(args, int));
 ret_val++;
 }
 }
+unsigned num;
+int dec;
+int octa;
+if (num > 1)
+{
+print decimal(dec = num)
+	_putchar("%u", num );
+	ret_val++;
+}
+if (num < 1)
+{
+	print octa(num / 8)
+	_putchar("%o", num);
+	ret_val++;
+	}
+if (num >= 1)
+{
+	print hexa(num / 16)
+	_putchar(%x" , num);
+	ret_val++;
+}
+else
+{
+	_putchar(%"X", num);
+        ret_val++;
+}
 va_end(args);
 return (ret_val);
 }

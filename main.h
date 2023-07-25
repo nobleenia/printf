@@ -8,5 +8,5 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int _puts(const char *s);
 int _getint(int n, char *buffer);
-void _putchar(num 1); 
+void _nonfunction(unsigned int num ...);
 #endif
