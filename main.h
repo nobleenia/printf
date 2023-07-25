@@ -12,4 +12,6 @@ void _getbinary(unsigned int num, char *buffer);
 int _letint(int n, char *buffer);
 void _octal(unsigned int num, char *buffer);
 void _hexaint(unsigned int num, char *buffer, int digit);
+int function_specifier(char spec, va_list args);
+
 #endif
