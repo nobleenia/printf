@@ -14,7 +14,6 @@ unsigned a;
 unsigned ret_val = 0;
 char buffer[12];
 
-
 va_list args;
 va_start(args, format);
 
@@ -49,42 +48,17 @@ _getint(num, buffer);
 ret_val += _puts(buffer);
 a++;
 }
+else if (format[a + 1] == 'b')
+		{
+	_getbinary(va_arg(args, unsigned int), buffer);
+	ret_val += _puts(buffer);
+	a++;
+		}
 else
 {
 _putchar('%');
 ret_val++;
 }
-if (format[a / 2] == 'b')
-{
-_putchar(va_arg(args, int));
-ret_val++;
-}
-}
-unsigned num;
-int dec;
-int octa;
-if (num > 1)
-{
-print decimal(dec = num)
-	_putchar("%u", num );
-	ret_val++;
-}
-if (num < 1)
-{
-	print octa(num / 8)
-	_putchar("%o", num);
-	ret_val++;
-	}
-if (num >= 1)
-{
-	print hexa(num / 16)
-	_putchar(%x" , num);
-	ret_val++;
-}
-else
-{
-	_putchar(%"X", num);
-        ret_val++;
 }
 va_end(args);
 return (ret_val);

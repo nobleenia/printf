@@ -8,5 +8,5 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int _puts(const char *s);
 int _getint(int n, char *buffer);
-void _nonfunction(unsigned int num ...);
+void _getbinary(unsigned int num, char *buffer); 
 #endif
