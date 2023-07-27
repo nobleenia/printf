@@ -1,0 +1,31 @@
+#include "main.h"
+
+/**
+ * print_octal - prints an unsigned int in octal format
+ * @n: the input integer to be printed
+ *
+ * Return: number of characters printed
+ */
+int print_octal(unsigned int n)
+{
+
+int ret_val = 0;
+unsigned int mask = 0x1C000000;
+int shift = 27;
+int zero = 0;
+int octate;
+
+while (shift >= 0)
+{
+octate = (n & mask) >> shift;
+if (octate != 0 || zero || shift == 0)
+{
+ret_val += _putchar(octate + '0');
+zero = 1;
+}
+
+mask >>= 3;
+shift -= 3;
+}
+return (ret_val);
+}

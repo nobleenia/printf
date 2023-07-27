@@ -5,19 +5,20 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdint.h>
+#include <stdio.h>
 
-int _printf(const char *format, ...);
 int _putchar(char c);
-int _puts(const char *s);
-int _getint(int n, char *buffer);
-void _getbinary(unsigned int num, char *buffer); 
-int _letint(int n, char *buffer);
-void _octal(unsigned int num, char *buffer);
-void _hexaint(unsigned int num, char *buffer, int digit);
-int function_specifier(char spec, va_list args);
-void _putchar_buff(const char *buffer);
-int _print_S(const char *s);
-char to_hex(int val);
-int _print_p(void *p);
+int _puts(char *str);
+int _printf(const char *format, ...);
+int print_binary(unsigned int n);
+int print_non_printable(char *str);
+int print_hex(unsigned int n);
+int print_hex_upper(unsigned int n);
+int print_num(int n);
+int print_unsigned(unsigned int n);
+int print_octal(unsigned int n);
+int print_rev_str(char *str);
+int print_rot13(char *str);
+int print_esc_str(char *str);
 
 #endif
