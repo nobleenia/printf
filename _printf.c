@@ -14,7 +14,10 @@ char *str;
 unsigned int num;
 int len;
 uintptr_t ptr;
-
+char buf[18];
+int is_r = 0;
+int num_val;
+ 
 va_start(args, format);
 
 while (format && format[i])
@@ -26,6 +29,12 @@ count += _putchar(format[i]);
 else if (format[i + 1])
 {
 i++;
+if (format[i] == 'r')
+{
+is_r = 1;
+}
+else
+{
 switch (format[i])
 {
 case 'c':
@@ -56,9 +65,9 @@ break;
 }
 case 'p':
 {
-count += _putchar('0') + _putchar('x');
 ptr = (uintptr_t)va_arg(args, void *);
-count += print_hex(ptr);
+sprintf(buf, "0x%zx", ptr);
+count += _puts(buf);
 break;
 }
 case 'd':
@@ -72,7 +81,7 @@ case 'o':
 count += print_octal(va_arg(args, unsigned int));
 break;
 case 'x':
-count += print_hex(va_arg(args, unsigned int));
+count += print_hex(va_arg(args, uintptr_t));
 break;
 case 'X':
 count += print_hex_upper(va_arg(args, unsigned int));
@@ -99,15 +108,48 @@ break;
 case 'R':
 count += print_rot13(va_arg(args, char *));
 break;
+case '+':
+{
+num_val = va_arg(args, int);
+if (num_val >= 0)
+{
+count += _putchar('+');
+}
+count += print_num(num_val);
+break;
+}
+case ' ':
+{
+num_val = va_arg(args, int);
+if (num_val >= 0)
+{
+count += _putchar(' ');
+}
+count += print_num(num_val);
+break;
+}
+case '#':
+{
+count += _putchar('%');
+count += _putchar(format[i]);
+break;
+}
 default:
 count += _putchar('%');
 count += _putchar(format[i]);
 break;
+}
+is_r = 0;
+}
+if (is_r)
+{
+count += _puts("%r");
+is_r = 0;
 }
 }
 i++;
 }
 
 va_end(args);
-return count;
+return (count);
 }

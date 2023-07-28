@@ -6,13 +6,14 @@
 #include <string.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <inttypes.h>
 
 int _putchar(char c);
 int _puts(char *str);
 int _printf(const char *format, ...);
 int print_binary(unsigned int n);
 int print_non_printable(char *str);
-int print_hex(unsigned int n);
+int print_hex(uintptr_t ptr);
 int print_hex_upper(unsigned int n);
 int print_num(int n);
 int print_unsigned(unsigned int n);
