@@ -16,8 +16,6 @@ int len;
 uintptr_t ptr;
 int is_r = 0;
 int num_val;
-int num_chars;
-char buff[17];
 
 int flag_plus;
 int flag_space;
@@ -83,8 +81,7 @@ break;
 case 'p':
 ptr = (uintptr_t)va_arg(args, void *);
 count += _puts("0x");
-num_chars = pointer_to_hex(ptr, buff);
-count += _puts(buff + (16 - num_chars));
+count += print_hex_without_leading_zeros(ptr);
 break;
 case 'd':
 case 'i':
