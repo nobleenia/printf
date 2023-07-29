@@ -21,5 +21,7 @@ int print_octal(unsigned int n);
 int print_rev_str(char *str);
 int print_rot13(char *str);
 int print_esc_str(char *str);
+int pointer_to_hex(uintptr_t ptr, char *buf);
+int print_hex_width(uintptr_t ptr, int width, char pad_char);
 
 #endif
