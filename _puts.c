@@ -6,13 +6,13 @@
  *
  * Return: non-negative number
  */
-int _puts(char *s)
+int _puts(char *str)
 {
 int len = 0;
 
-while (s[len])
+while (str[len])
 {
-if (_putchar(s[len]) == -1)
+if (_putchar(str[len]) == -1)
 {
 return (-1);
 }

@@ -6,16 +6,24 @@
  *
  * Return: number printed
  */
-int print_unsigned(unsigned int n)
+int _print_unsigned(va_list args, char buffer[], int flags, int width, int prec, int size)
 {
+int n = BUFFER_SIZE - 2;
+unsigned long int num = va_arg(args, unsigned long int);
 
-int ret_val = 0;
+num = convert_size_unsigned(num, size);
 
-if (n / 10 != 0)
+if (num == 0)
 {
-ret_val += print_unsigned(n / 10);
+buffer[n--] = '0';
 }
-ret_val += _putchar((n % 10) + '0');
+buffer[BUFFER_SIZE - 1] = '\0';
+while (num > 0)
+{
+buffer[n--] = (num % 10);
+num /= 10;
+}
+n++;
 
-return (ret_val);
+return (write_unsigned(0, n, buffer, flags, width, prec, size));
 }

@@ -2,25 +2,37 @@
 
 /**
  * print_rev_str - print string in reverse format
- * @str: input string to be printed
+ * @args: va_list containing the arguments
  *
  * Return: number of characters printed
  */
-int print_rev_str(char *str)
+int _print_rev(va_list args, char buffer[], int flags, int width, int prec, int size)
 {
+char *str;
+int n;
+int ret_val = 0;
 
-int len = 0;
-char *ptr = str;
+UNUSED(buffer);
+UNUSED(flags);
+UNUSED(width);
+UNUSED(size);
 
-while (*ptr)
+str = va_arg(args, char *);
+
+if (str == NULL)
 {
-len++;
-ptr++;
+UNUSED(prec);
+str = ")Null(";
 }
-while (len > 0)
+for (n = 0; str[n]; n++)
+;
+
+for (n = n - 1; n >= 0; n--)
 {
-_putchar(str[len - 1]);
-len--;
+char z = str[n];
+
+write(1, &z, 1);
+ret_val++;
 }
-return (len);
+return (ret_val);
 }

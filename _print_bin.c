@@ -1,28 +1,48 @@
 #include "main.h"
 
 /**
- * print_binary - Helper function to print an unsigned int in binary format
- * @n: The unsigned int to print
+ * _print_binary - Print an unsigned integer in binary format
+ * @args: va_list containing the arguments
+ * @buffer: Unused buffer
+ * @flags: Unused flags
+ * @width: Unused width
+ * @prec: Unused precision
+ * @size: Unused size
  *
- * Return: number of characters printed
+ * Return: Number of characters printed
  */
-int print_binary(unsigned int n)
+int _print_binary(va_list args, char buffer[], int flags, int width, int prec, int size)
 {
-int ret_val = 0;
-unsigned int mask = 1 << ((sizeof(unsigned int) * 8) - 1);
-int zero = 0;
-int bit;
+unsigned int n = va_arg(args, unsigned int);
+unsigned int m = 2147483648;
+unsigned int i, sum;
+unsigned int arr[32];
+int ret_val;
+char z;
 
-while (mask > 0)
-{
+UNUSED(buffer);
+UNUSED(flags);
+UNUSED(width);
+UNUSED(prec);
+UNUSED(size);
 
-bit = (n & mask) ? 1 : 0;
-if (bit == 1 || zero || mask == 1)
+arr[0] = n / m;
+
+for (i = 1; i < 32; i++)
 {
-ret_val += _putchar(bit + '0');
-zero = 1;
+m /= 2;
+arr[i] = (n / m) % 2;
 }
-mask >>= 1;
+
+for ( i = 0, sum = 0, ret_val = 0; i < 32; i++)
+{
+sum += arr[i];
+if (sum || i == 31)
+{
+z = '0' + arr[i];
+write(1, &z, 1);
+ret_val++;
 }
-return (ret_val);
+}
+return(ret_val);
 }

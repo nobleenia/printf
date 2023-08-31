@@ -2,34 +2,42 @@
 
 /**
  * print_non_printable - Helper function to print non-printable characters
- * @str: The string to print
+ * @args: va_list containing the arguments
+ * @buffer: The buffer to write to
  *
  * Return: number of characters printed
  */
-int print_non_printable(char *str)
+int print_non_printable(va_list args, char buffer[], int flags, int width, int precision, int size)
 {
+int i = 0;
+int offset = 0;
+char *str = va_arg(args, char *);
 
-int ret_val = 0;
-char c;
+UNUSED(flags);
+UNUSED(width);
+UNUSED(precision);
+UNUSED(size);
 
-while (*str)
+if (str == NULL)
 {
-c = *str;
-if (c < 32 || c >= 127)
-{
-ret_val += _putchar('\\');
-ret_val += _putchar('x');
-if (c < 16)
-{
-ret_val += _putchar('0');
+return (write(1, "(null)", 6));
 }
-ret_val += print_hex((unsigned char)c);
+
+while (str[i] != '\0')
+{
+if (is_printable(str[i]))
+{
+buffer[i + offset] = str[i];
 }
 else
 {
-ret_val += _putchar(c);
+offset += append_hexa_code(str[i], buffer, i + offset);
 }
-str++;
+
+i++;
 }
-return (ret_val);
+
+buffer[i + offset] = '\0';
+
+return (write(1, buffer, i + offset));
 }
